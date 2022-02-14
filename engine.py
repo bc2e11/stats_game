@@ -22,7 +22,13 @@ class Player():
         self.damage = 0
         self.unitChoice = unitChoice
 
-    
+    def initStats(self, player):
+        if(  self.unitChoice == 1 and self.firstInit == True):
+             self.damage = UnitsDMG.MELEE_DMG._value_
+        if(self.unitChoice == 3 and self.firstInit == True):
+             self.damage = UnitsDMG.CAVALRY_DMG._value_
+        if(self.unitChoice == 2 and self.firstInit == True):
+            self.damage = UnitsDMG.RANGED_DMG._value_    
     def weatherEventFunc(self, weatherEventNum, skipWeather):
         self.weatherEvent = weatherEventNum
         self.skipWeather = skipWeather
@@ -38,16 +44,10 @@ class Player():
         if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == False
         or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 3 and self.skipWeather == False
         or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == False):
-            self.health += 10
+            self.health += 5
             print("+5 HP for", self.name, "due to the weather.")
             
-    def initStats(self, player):
-        if(  self.unitChoice == 1 and self.firstInit == True):
-             self.damage = UnitsDMG.MELEE_DMG._value_
-        if(self.unitChoice == 3 and self.firstInit == True):
-             self.damage = UnitsDMG.CAVALRY_DMG._value_
-        if(self.unitChoice == 2 and self.firstInit == True):
-            self.damage = UnitsDMG.RANGED_DMG._value_
+    
 
     def takeDamage(self, damageTaken):
         self.health -= damageTaken
