@@ -1,54 +1,78 @@
+import engine
 import random
-from enum import Enum
-leaders = ["leader1", "leader2", "leader3"]
-
-class Leader(Enum):
-    ONE =   "leader1"
-    TWO =   "leader2"
-    THREE = "leader3"
-    def __init__(self, leader):
-        self.leader = leader
-
-    def getUnit(self, leaderName, n):
-        units = []
-
-        if leaderName == Leader.ONE: units = ["leader1Melee", "leader1Ranged", "leader1Cavalry"]
-        if leaderName == Leader.TWO: units = ["leader2Melee", "leader2Ranged", "leader2Cavalry"]
-        if leaderName == Leader.THREE: units = ["leader3Melee", "leader3Ranged", "leader3Cavalry"]
-        # Returns list with units available per leader
-        self.units = units
-        return units[n]
-
-class Units(Enum):
-    MELEE = 30 
-    RANGED = 25
-    CAVALRY = 40
- 
-for i in range(3):
-    print(str(i+1)+")", "{0}".format(leaders[i]))
-
-leaderNumber = int(input("Which leader would you like to choose? "))
-Player = Leader(leaders[leaderNumber-1])
-
-print("You are the great", Player.leader)
 
 
-cpuLeader = random.randint(1,3)
+weather = ["Typhoon", "Hurricane", "Earthquake"]
+units = ["Melee", "Ranged", "Cavalry"]
 
-while(leaderNumber == cpuLeader):
-    cpuLeader = random.randint(1,3)
+for i in range(3):print(str(i+1)+")", "{0}".format(units[i]))
 
-Computer = Leader(leaders[cpuLeader-1])
+unitChoiceP = int(input())
 
-# print(Computer.leader, Player.leader)
+unitChoiceA = random.randint(1, 3)
+while(unitChoiceA == unitChoiceP):
+    unitChoiceA = random.randint(1, 3)
 
-computerUnitChoice = random.randint(0,2)
-computerUnit = Computer.getUnit(Computer.leader, int(computerUnitChoice))
+game = engine.Game()
 
-print("The units available for your leader are:\n" )
+player = engine.Player("player", unitChoiceP, True)
+ai = engine.Player("ai", unitChoiceA, True)
 
-for i in range(3): print(str(i+1)+")", "{0}".format(Player.getUnit(Player.leader, i)))
+player.initStats(player)
+ai.initStats(ai)
 
-weatherDecision = random.randint(1,3)
+print("You picked", units[player.unitChoice-1],"\nHP: {0}".format(player.health), "\nDMG: {0}".format(player.damage))
+print()
+print("ai picked", units[ai.unitChoice-1],"\nHP: {0}".format(ai.health), "\nDMG: {0}".format(ai.damage))
+
+print()
+
+player.getHP()
+print()
+ai.getHP()
+print()
+
+while not game.gameOver:
+    game.newRound()
+
+    player.weatherEventFunc(random.randint(1,3),not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )
+    ai.weatherEventFunc(random.randint(1,3), not bool(random.randint(1,2)))
+
+    if(player.skipWeather == False):
+        print(player.name, "incurred the effects of a", weather[player.weatherEvent-1])
+    else:
+        print()
+        print(player.name, "chose to skip the weather")
+    if(ai.skipWeather == False):
+        print(ai.name, "incurred the effects of a", weather[player.weatherEvent-1])
+    else:
+        print("The ai chose to skip the weather")
 
 
+    crit = random.randint(1,5)
+    playerN = random.randint(1,2)
+    if(crit == 1 and playerN == 1):
+        print(player.name, "dealt a Critcal hit!")
+        player.damage += 5 
+    else:
+        player.damage += 0
+    if(crit == 1 and playerN == 2):
+        print(ai.name, "dealt a Critcal hit!")
+        ai.damage += 5 
+    else:
+        ai.damage += 0
+
+
+    player.takeDamage(ai.damage)
+    print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
+    ai.takeDamage(player.damage)
+    print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
+    
+    print()
+
+    print("===   END TURN   ===")
+    player.getHP()
+    print()
+    ai.getHP()
+    print()
+    game.checkWin(player, ai)
