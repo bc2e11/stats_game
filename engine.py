@@ -1,12 +1,13 @@
 import random
 from enum import Enum
+import numpy
 
 weather = ["Typhoon", "Hurricane", "Earthquake"]
 units = ["Melee", "Ranged", "Cavalry"]
 
 class UnitsDMG(Enum):
-    MELEE_DMG = 20 + random.randint(-3, 3)
-    RANGED_DMG = 20 + random.randint(-5, 5)
+    MELEE_DMG = 20 + random.randint(-1, 1)
+    RANGED_DMG = 20 + random.randint(-3, 3)
     CAVALRY_DMG = 20 + random.randint(-2, 2)
 class WEATHER(Enum):
     TYPHOON = 1
