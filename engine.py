@@ -1,6 +1,6 @@
 import random
 from enum import Enum
-import numpy
+
 
 weather = ["Typhoon", "Hurricane", "Earthquake"]
 units = ["Melee", "Ranged", "Cavalry"]
@@ -22,6 +22,7 @@ class Player():
         self.health = 100
         self.damage = 0
         self.unitChoice = unitChoice
+        self.crit = False
 
     def initStats(self, player):
         if(  self.unitChoice == 1 and self.firstInit == True):
@@ -30,6 +31,8 @@ class Player():
              self.damage = UnitsDMG.CAVALRY_DMG._value_
         if(self.unitChoice == 2 and self.firstInit == True):
             self.damage = UnitsDMG.RANGED_DMG._value_    
+        return self.damage
+    
     def weatherEventFunc(self, weatherEventNum, skipWeather):
         self.weatherEvent = weatherEventNum
         self.skipWeather = skipWeather
@@ -47,6 +50,7 @@ class Player():
         or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == False):
             self.health += 5
             print("+5 HP for", self.name, "due to the weather.")
+        return weather[weatherEventNum-1]
             
     
 
@@ -77,29 +81,29 @@ class Game:
 
     # Check if either or both Players is below zero health
     def checkWin(self, player, ai):
-        if player.health < 1 and ai.health > 0:
+        if player.health < 1 and ai.health >= 1 and player.health < ai.health:
             self.gameOver = True # you lose
-            f = open("you_lose.txt", "r")
-            text = f.readlines()
+            g = open("you_lose.txt", "r")
+            text = g.readlines()
 
             for line in text:
                 print(line.strip())
 
-            f.close()
-        elif ai.health < 1 and player.health > 0:
+            g.close()
+        elif ai.health < 1 and player.health >= 1 and player.health > ai.health:
             self.gameOver = True
-            f = open("you_win.txt", "r")
-            text = f.readlines()
+            g = open("you_win.txt", "r")
+            text = g.readlines()
 
             for line in text:
                 print(line.strip())
-            f.close()
-        elif player.health < 1 and ai.health < 1:
+            g.close()
+        elif player.health < 1 and ai.health < 1 and player.health == ai.health:
             self.gameOver = True
-            f = open("you_win.txt", "r")
-            text = f.readlines()
+            g = open("you_win.txt", "r")
+            text = g.readlines()
 
             for line in text:
                 print(line.strip())
-            f.close()
+            g.close()
     
