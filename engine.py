@@ -104,9 +104,9 @@ class Game:
             g.close()
         elif player.health < 1 and ai.health < 1 and player.health == ai.health:
             self.gameOver = True
-            g = open("you_win.txt", "r")
+            g = open("draw.txt", "r")
             text = g.readlines()
-            
+
             for line in text:
                 print(line.strip())
             g.close()
