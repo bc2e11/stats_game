@@ -23,6 +23,7 @@ class Player():
         self.damage = 0
         self.unitChoice = unitChoice
         self.crit = False
+        self.won = None
 
     def initStats(self, player):
         if(  self.unitChoice == 1 and self.firstInit == True):
@@ -85,13 +86,16 @@ class Game:
             self.gameOver = True # you lose
             g = open("you_lose.txt", "r")
             text = g.readlines()
-
+            player.won = False
+            ai.won = True
             for line in text:
                 print(line.strip())
 
             g.close()
         elif ai.health < 1 and player.health >= 1 and player.health > ai.health:
             self.gameOver = True
+            player.won = True
+            ai.won = False
             g = open("you_win.txt", "r")
             text = g.readlines()
 
@@ -102,7 +106,7 @@ class Game:
             self.gameOver = True
             g = open("you_win.txt", "r")
             text = g.readlines()
-
+            
             for line in text:
                 print(line.strip())
             g.close()

@@ -91,7 +91,7 @@ def main():
             ai.damage += 0
 
 
-        f.write("\tcrit{0}: {1}\n".format(player.name.upper(), str(player.crit)))
+        f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
         f.write("\tcritA: {}\n".format(str(player.crit)))
 
         player.takeDamage(ai.damage)
@@ -115,5 +115,9 @@ def main():
         ai.getHP()
         print()
         game.checkWin(player, ai)
+    f.write("\n {0} won: {1}".format(player.name, player.won))
+    f.write("\n {0} won: {1}".format(ai.name, ai.won))
+
 main()
+
 f.close()
