@@ -1,0 +1,63 @@
+Tester name: gamma
+Unit choice 1
+Unit choice: 1, Melee
+AI Unit choice: 2, Ranged
+gamma's hp: 100
+gamma's dmg: 18
+ai's hp: 100
+ai's dmg: 23
+
+Round 1 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1005a1b30>: False
+	critA: False
+	ai took 18 dmg
+	gamma took 26 dmg
+	End HP:79
+	AI End HP:82
+
+]
+
+Round 2 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1005a1b30>: False
+	critA: False
+	ai took 18 dmg
+	gamma took 29 dmg
+	End HP:55
+	AI End HP:64
+
+]
+
+Round 3 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1005a1b30>: False
+	critA: False
+	ai took 18 dmg
+	gamma took 29 dmg
+	End HP:26
+	AI End HP:46
+
+]
+
+Round 4 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1005a1b30>: False
+	critA: False
+	ai took 18 dmg
+	gamma took 32 dmg
+	End HP:-6
+	AI End HP:28
+
+]
+
+ gamma won: False
+ ai won: True

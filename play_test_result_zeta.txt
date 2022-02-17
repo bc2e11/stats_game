@@ -1,0 +1,76 @@
+Tester name: zeta
+Unit choice 1
+Unit choice: 1, Melee
+AI Unit choice: 3, Cavalry
+zeta's hp: 100
+zeta's dmg: 17
+ai's hp: 100
+ai's dmg: 18
+
+Round 1 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	critZETA: True
+	critA: False
+	ai took 24 dmg
+	zeta took 18 dmg
+	End HP:82
+	AI End HP:76
+
+]
+
+Round 2 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	critZETA: True
+	critA: False
+	ai took 24 dmg
+	zeta took 18 dmg
+	End HP:69
+	AI End HP:57
+
+]
+
+Round 3 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	critZETA: True
+	critA: False
+	ai took 24 dmg
+	zeta took 18 dmg
+	End HP:56
+	AI End HP:33
+
+]
+
+Round 4 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	critZETA: True
+	critA: False
+	ai took 24 dmg
+	zeta took 13 dmg
+	End HP:48
+	AI End HP:9
+
+]
+
+Round 5 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	critZETA: True
+	critA: True
+	ai took 27 dmg
+	zeta took 23 dmg
+	End HP:25
+	AI End HP:-18
+
+]
+
+ zeta won: True
+ ai won: False

@@ -101,8 +101,8 @@ def main():
             ai.damage += random.randint(1,5)
             print("Since the ai picked {0} and skipped weather, they beat your unit and their damage is now {1}".format(units[ai.unitChoice-1], ai.damage))
         
-        f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
-        f.write("\tcritA: {}\n".format(str(player.crit)))
+        f.write("\tcrit{0}: {1}\n".format(name.upper(), player.crit))
+        f.write("\tcritA: {}\n".format(ai.crit))
 
         
         player.takeDamage(ai.damage, player, ai)
