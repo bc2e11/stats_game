@@ -54,26 +54,16 @@ def main():
     while not game.gameOver:
         game.newRound()
 
-        weatherP = player.weatherEventFunc(random.randint(1,3),not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )
-        weatherA = ai.weatherEventFunc(random.randint(1,3), not bool(random.randint(1,2)))
-        
-        
+        weatherNumber = random.randint(1,3)
+        weather = player.weatherEventFunc(weatherNumber,not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )       
 
         f.write("\nRound {} \n[\n\tplayerSW: {}\n".format(game.round, player.skipWeather))
         f.write("\tAISW: {}\n".format(game.round, ai.skipWeather))
-        f.write("\t{0}W: {1}\n".format(player.name, weatherP))
-        f.write("\tAIW: {}\n".format(weatherA))
-
+        f.write("\tW: {1}\n".format(weather))
 
         if(player.skipWeather == False):
             print(player.name, "incurred the effects of a", weather[player.weatherEvent-1])
-        else:
-            print()
-            print(player.name, "chose to skip the weather")
-        if(ai.skipWeather == False):
             print(ai.name, "incurred the effects of a", weather[player.weatherEvent-1])
-        else:
-            print("The ai chose to skip the weather")
 
         crit = random.randint(1,6)
         playerN = random.randint(1,2)
@@ -89,7 +79,6 @@ def main():
             ai.crit = True
         else:
             ai.damage += 0
-
 
         f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
         f.write("\tcritA: {}\n".format(str(player.crit)))

@@ -1,21 +1,24 @@
-# Player 1 picks a leader
-# Player 2 picks a leader
-# Each leader is associated with certain units 
-# For example, Hannibal would have ranged elephant archers (ranged)
+# Player 1 picks a unit
+# Player 2 (ai) picks a unit (that is not tbe same as Player 1)
+
 # All units are based around melee, ranged, cavalry
-# Certain units have weaknesses to the other units 
 
-# Melee beats cavalry 
-# Ranged beats melee
-# Cavalry beats ranged 
+# Player 1 will choose a weather event that will affect both participants in the following ways based on their unit choice: 
 
-# By 'beat', we only mean 'dmg' points 
-# Certain units start with certain health points
+# Player 1 and 2 pick one type of unit. Everyone has a base damage of 20 but depending on the unit, the damage they deal will range by a random number. 
+# Melee DMG: 20 + [-1, 1]
+# Ranged DMG: 20 + [-3, 3]
+# Cavalry DMG: 20 + [-2, 2]
 
-# Ex: Leader 1's melee units are extremely durable (145 hp) vs another leader's which are mediocre (85 hp)
+# Typhoon will disadvtange cavalry (-5 dmg), advantage ranged   (+5 hp)
+# Hurricane will disadvantage ranged (-5 dmg), advtange melee   (+5 hp)
+# Earthquake will disadvantage melee (-5 dmg), advrange cavalry (+5 hp)
 
-# Random weather events help decide advantages and disadvantages 
+# The information above means that at the beginning of a game, 
+# your unit’s base damage is defined by 20 plus or minus a random integer defined above. 
+# Therefore: 
+# Melee damage range: 19-21 dmg
+# Ranged damage range: 17-23 dmg
+# Cavalry damage range: 18-22
 
-# Typhoon will disadvtange cavalry, advantage ranged
-# Hurricane will disadvantage ranged, advtange melee
-# Earthquake will disadvantage melee, advrange cavalry
+# **The goal of the game is reduce the other player’s health points (hp) to zero.**
