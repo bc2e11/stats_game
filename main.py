@@ -110,12 +110,14 @@ def main():
 
         print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
         print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
+        
+        f.write("\t{0} took {1} dmg\n".format(ai.name, player.damage))
+        f.write("\t{0} took {1} dmg\n".format(player.name, ai.damage))
+
         if(ai.dAffected == 0):
             ai.damage += 5
         if(player.dAffected == 0):
             player.damage += 5
-        
-        
 
         print()
 
