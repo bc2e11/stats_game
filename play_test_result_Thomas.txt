@@ -1,0 +1,63 @@
+Tester name: Thomas
+Unit choice 2
+Unit choice: 2, Ranged
+AI Unit choice: 3, Cavalry
+Thomas's hp: 100
+Thomas's dmg: 24
+ai's hp: 100
+ai's dmg: 22
+
+Round 1 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1032b25f0>: False
+	critA: False
+	Thomas took 26 dmg
+	ai took 24 dmg
+	End HP:74
+	AI End HP:76
+
+]
+
+Round 2 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1032b25f0>: True
+	critA: True
+	Thomas took 26 dmg
+	ai took 29 dmg
+	End HP:48
+	AI End HP:47
+
+]
+
+Round 3 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1032b25f0>: True
+	critA: True
+	Thomas took 26 dmg
+	ai took 29 dmg
+	End HP:22
+	AI End HP:18
+
+]
+
+Round 4 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1032b25f0>: True
+	critA: True
+	Thomas took 31 dmg
+	ai took 34 dmg
+	End HP:-9
+	AI End HP:-16
+
+]
+
+ Thomas won: True
+ ai won: False

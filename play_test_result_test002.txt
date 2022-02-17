@@ -1,0 +1,8 @@
+Tester name: test002
+Unit choice 1
+Unit choice: 1, Melee
+AI Unit choice: 3, Cavalry
+test002's hp: 100
+test002's dmg: 23
+ai's hp: 100
+ai's dmg: 20

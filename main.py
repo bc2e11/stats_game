@@ -54,13 +54,22 @@ def main():
     while not game.gameOver:
         game.newRound()
 
-        weatherNumber = random.randint(1,3)
-        weather = player.weatherEventFunc(weatherNumber,not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )       
+
+        player.weatherEventFunc(random.randint(1,3),not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )
+        ai.weatherEventFunc(random.randint(1,3) ,None)
+
 
         if(ai.skipWeather == True):
             print("AI chose to skip the weather")
+        else:
+            print("AI WEATHER: {} ".format(weather[ai.weatherEvent-1]), )
+            
         if(player.skipWeather == True):
             print("You chose to skip the weather")
+        else:
+            print("PLAYER WEATHER: {} ".format(weather[player.weatherEvent-1]), )
+
+        print()
         f.write("\nRound {} \n[\n\tskip weather: {}\n".format(game.round, player.skipWeather))
         f.write("\tW: {}\n".format(weather))
 
@@ -95,13 +104,11 @@ def main():
         f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
         f.write("\tcritA: {}\n".format(str(player.crit)))
 
-        player.takeDamage(ai.damage)
+        player.takeDamage(ai.damage, player, ai)
         f.write("\t{} took {} dmg\n".format(player.name, ai.damage))
-        print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
-        ai.takeDamage(player.damage)
-
+        ai.takeDamage(player.damage, player, ai)
         f.write("\t{} took {} dmg\n".format(ai.name, player.damage))
-        print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
+        
 
         print()
 

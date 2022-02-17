@@ -7,8 +7,8 @@ weather = ["Typhoon", "Hurricane", "Earthquake"]
 units = ["Melee", "Ranged", "Cavalry"]
 
 class UnitsDMG(Enum):
-    MELEE_DMG = 20 + random.randint(-1, 1)
-    RANGED_DMG = 20 + random.randint(-3, 3)
+    MELEE_DMG = 20 + random.randint(-3, 3)
+    RANGED_DMG = 20 + random.randint(-4, 4)
     CAVALRY_DMG = 20 + random.randint(-2, 2)
 class WEATHER(Enum):
     TYPHOON = 1
@@ -18,6 +18,7 @@ class WEATHER(Enum):
 class Player():
     def __init__(self, name, unitChoice , firstInit,):
         self.firstInit = firstInit
+        self.dAffected = -1
         self.name = name
         self.skipWeather = False
         self.health = 100
@@ -42,10 +43,11 @@ class Player():
         
         if(self.name == "ai"):
           self.skipWeather = bool(random.randint(0,1))
-    
+
         if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 3 and self.skipWeather == False
         or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 1 and self.skipWeather == False
         or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 2 and self.skipWeather == False):
+            self.dAffected = 0
             self.damage -= 5
             print("-5 DMG for", self.name, "due to the weather.")
         if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == False
@@ -57,8 +59,13 @@ class Player():
             
     
 
-    def takeDamage(self, damageTaken):
+    def takeDamage(self, damageTaken, player, ai):
         self.health -= damageTaken
+        if(self.name == "ai")
+            print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
+            print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
+        if(self.dAffected == 0):
+            self.damage += 5
 
     def getHP(self):
         healthDashes = 20
@@ -84,7 +91,7 @@ class Game:
 
     # Check if either or both Players is below zero health
     def checkWin(self, player, ai):
-        if player.health < 1 and ai.health >= 1 and player.health < ai.health:
+        if player.health < 1 and ai.health >= 1 and player.health < ai.health or player.health < 1 and ai.health < 1 and player.health < ai.health:
             self.gameOver = True # you lose
             g = open("you_lose.txt", "r")
             text = g.readlines()
@@ -94,7 +101,7 @@ class Game:
                 print(line.strip())
 
             g.close()
-        elif ai.health < 1 and player.health >= 1 and player.health > ai.health:
+        elif ai.health < 1 and player.health >= 1 and player.health > ai.health or player.health < 1 and ai.health < 1 and player.health > ai.health:
             self.gameOver = True
             player.won = True
             ai.won = False
@@ -104,7 +111,7 @@ class Game:
             for line in text:
                 print(line.strip())
             g.close()
-        elif player.health < 1 and ai.health < 1 and player.health == ai.health:
+        elif player.health < 1 and ai.health < 1 and player.health == ai.health or player.health < 1 and ai.health < 1 and player.health == ai.health:
             self.gameOver = True
             g = open("draw.txt", "r")
             text = g.readlines()

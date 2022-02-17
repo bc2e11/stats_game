@@ -1,0 +1,89 @@
+Tester name: test004
+Unit choice 3
+Unit choice: 3, Cavalry
+AI Unit choice: 1, Melee
+test004's hp: 100
+test004's dmg: 18
+ai's hp: 100
+ai's dmg: 18
+
+Round 1 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 18 dmg
+	ai took 18 dmg
+	End HP:87
+	AI End HP:87
+
+]
+
+Round 2 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 18 dmg
+	ai took 18 dmg
+	End HP:69
+	AI End HP:69
+
+]
+
+Round 3 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 13 dmg
+	ai took 18 dmg
+	End HP:56
+	AI End HP:51
+
+]
+
+Round 4 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 18 dmg
+	ai took 18 dmg
+	End HP:38
+	AI End HP:38
+
+]
+
+Round 5 
+[
+	skip weather: False
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 26 dmg
+	ai took 23 dmg
+	End HP:12
+	AI End HP:15
+
+]
+
+Round 6 
+[
+	skip weather: True
+	W: ['Typhoon', 'Hurricane', 'Earthquake']
+	crit<built-in method upper of str object at 0x1014168b0>: False
+	critA: False
+	test004 took 32 dmg
+	ai took 28 dmg
+	End HP:-20
+	AI End HP:-13
+
+]
+
+ test004 won: False
+ ai won: True
