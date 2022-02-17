@@ -2,7 +2,7 @@ import engine
 import random
 
 name = input("What is your name? ")
-playTestResults = "/playtests/play_test_result_" + name
+playTestResults = "play_test_result_" + name
 
 f = open(playTestResults+".txt", "w")
 f.write("Tester name: {}\n".format(name))
@@ -137,5 +137,4 @@ def main():
 
 main()
 
-print("Test file for {} has been written".format(name.upper()))
 f.close()

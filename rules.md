@@ -15,6 +15,7 @@
 # Ranged damage range: 17-23 dmg
 # Cavalry damage range: 18-22 dmg
 
+# Each turn there is a 1 in 6 chance that either players deal a critical hit
 
 # Player 1 will choose a weather event that will affect both participants in the following ways based on their unit choice: 
 

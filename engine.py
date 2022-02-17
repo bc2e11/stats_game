@@ -61,11 +61,6 @@ class Player():
 
     def takeDamage(self, damageTaken, player, ai):
         self.health -= damageTaken
-        if(self.name == "ai")
-            print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
-            print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
-        if(self.dAffected == 0):
-            self.damage += 5
 
     def getHP(self):
         healthDashes = 20
