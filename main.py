@@ -137,4 +137,5 @@ def main():
 
 main()
 
+print("Test file for {} has been written".format(name.upper()))
 f.close()
