@@ -1,0 +1,76 @@
+Tester name: test2
+Unit choice 3
+Unit choice: 3, Cavalry
+AI Unit choice: 2, Ranged
+test2's hp: 100
+test2's dmg: 18
+ai's hp: 100
+ai's dmg: 22
+
+Round 1 
+[
+	skip weather: True
+	W: Earthquake
+	crit<built-in method upper of str object at 0x1043d5a30>: False
+	critA: False
+	test2 took 22 dmg
+	ai took 18 dmg
+	End HP:78
+	AI End HP:82
+
+]
+
+Round 2 
+[
+	skip weather: True
+	W: Typhoon
+	crit<built-in method upper of str object at 0x1043d5a30>: False
+	critA: False
+	test2 took 22 dmg
+	ai took 18 dmg
+	End HP:56
+	AI End HP:64
+
+]
+
+Round 3 
+[
+	skip weather: True
+	W: Hurricane
+	crit<built-in method upper of str object at 0x1043d5a30>: False
+	critA: False
+	test2 took 27 dmg
+	ai took 18 dmg
+	End HP:29
+	AI End HP:46
+
+]
+
+Round 4 
+[
+	skip weather: True
+	W: Earthquake
+	crit<built-in method upper of str object at 0x1043d5a30>: False
+	critA: False
+	test2 took 27 dmg
+	ai took 18 dmg
+	End HP:2
+	AI End HP:28
+
+]
+
+Round 5 
+[
+	skip weather: True
+	W: Hurricane
+	crit<built-in method upper of str object at 0x1043d5a30>: False
+	critA: False
+	test2 took 32 dmg
+	ai took 18 dmg
+	End HP:-30
+	AI End HP:10
+
+]
+
+ test2 won: False
+ ai won: True

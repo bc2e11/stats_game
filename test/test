@@ -1,0 +1,26 @@
+class testClass():
+    def __init__(self, name) -> None:
+        self.name = name
+        self.changer = False
+        self.stuff = 1
+        if(self.name != "1"):
+            self.stuff = 2
+    
+
+    def someFunction(self, obj1, obj2):
+        other = object
+        if(self.name != "1"):
+            other = obj2
+        else:
+            other = obj1
+        if(self.stuff == 1 and other.stuff == 2 ):
+            self.changer = True
+        
+obj1 = testClass("1")
+obj2 = testClass("2")
+
+obj1.someFunction(obj1, obj2)
+obj2.someFunction(obj1, obj2)
+
+print(obj1.changer)
+print(obj2.changer)

@@ -1,0 +1,4 @@
+Tester name: test5
+Unit choice 3
+Unit choice: 3, Cavalry
+AI Unit choice: 2, Ranged

@@ -16,7 +16,7 @@ class WEATHER(Enum):
     EARTHQUAKE = 3
 
 class Player():
-    def __init__(self, name, unitChoice,firstInit):
+    def __init__(self, name, unitChoice , firstInit,):
         self.firstInit = firstInit
         self.name = name
         self.skipWeather = False
@@ -33,6 +33,7 @@ class Player():
              self.damage = UnitsDMG.CAVALRY_DMG._value_
         if(self.unitChoice == 2 and self.firstInit == True):
             self.damage = UnitsDMG.RANGED_DMG._value_    
+        
         return self.damage
     
     def weatherEventFunc(self, weatherEventNum, skipWeather):

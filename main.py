@@ -57,13 +57,13 @@ def main():
         weatherNumber = random.randint(1,3)
         weather = player.weatherEventFunc(weatherNumber,not bool(input("Enter 1 to use weather, or press enter to skip it: ")) )       
 
-        f.write("\nRound {} \n[\n\tplayerSW: {}\n".format(game.round, player.skipWeather))
-        f.write("\tAISW: {}\n".format(game.round, ai.skipWeather))
-        f.write("\tW: {1}\n".format(weather))
+        if(ai.skipWeather == True):
+            print("AI chose to skip the weather")
+        if(player.skipWeather == True):
+            print("You chose to skip the weather")
+        f.write("\nRound {} \n[\n\tskip weather: {}\n".format(game.round, player.skipWeather))
+        f.write("\tW: {}\n".format(weather))
 
-        if(player.skipWeather == False):
-            print(player.name, "incurred the effects of a", weather[player.weatherEvent-1])
-            print(ai.name, "incurred the effects of a", weather[player.weatherEvent-1])
 
         crit = random.randint(1,6)
         playerN = random.randint(1,2)
@@ -80,6 +80,18 @@ def main():
         else:
             ai.damage += 0
 
+        if(player.unitChoice == 1 and ai.unitChoice == 3 and player.skipWeather == True or 
+        player.unitChoice == 2 and ai.unitChoice == 1 and player.skipWeather == True or
+        player.unitChoice == 3 and ai.unitChoice == 2 and player.skipWeather == True):
+            player.damage += random.randint(1,5)
+            print("Since the ai picked {0} and you skipped weather, you beat their unit and your damage is now {1}".format(units[player.unitChoice-1], player.damage))
+        
+        if(player.unitChoice == 3 and ai.unitChoice == 1 and ai.skipWeather == True or 
+        player.unitChoice == 1 and ai.unitChoice == 2 and ai.skipWeather == True or
+        player.unitChoice == 2 and ai.unitChoice == 3 and ai.skipWeather == True):
+            ai.damage += random.randint(1,5)
+            print("Since the ai picked {0} and skipped weather, they beat your unit and their damage is now {1}".format(units[ai.unitChoice-1], ai.damage))
+        
         f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
         f.write("\tcritA: {}\n".format(str(player.crit)))
 
