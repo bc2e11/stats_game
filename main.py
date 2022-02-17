@@ -2,7 +2,7 @@ import engine
 import random
 
 name = input("What is your name? ")
-playTestResults = "play_test_result_" + name
+playTestResults = "/playtests/play_test_result_" + name
 
 f = open(playTestResults+".txt", "w")
 f.write("Tester name: {}\n".format(name))
@@ -104,10 +104,17 @@ def main():
         f.write("\tcrit{0}: {1}\n".format(player.name.upper, str(player.crit)))
         f.write("\tcritA: {}\n".format(str(player.crit)))
 
+        
         player.takeDamage(ai.damage, player, ai)
-        f.write("\t{} took {} dmg\n".format(player.name, ai.damage))
         ai.takeDamage(player.damage, player, ai)
-        f.write("\t{} took {} dmg\n".format(ai.name, player.damage))
+
+        print(player.name, "attacked {0} for {1} dmg".format(ai.name, player.damage))
+        print(ai.name, "attacked {0} for {1} dmg".format(player.name, ai.damage))
+        if(ai.dAffected == 0):
+            ai.damage += 5
+        if(player.dAffected == 0):
+            player.damage += 5
+        
         
 
         print()
