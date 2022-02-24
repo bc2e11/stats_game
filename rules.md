@@ -1,7 +1,7 @@
 # Player 1 picks a unit
-# Player 2 (ai) picks a unit (that is not tbe same as Player 1)
+# Player 2 (ai) picks a unit (that is not the same as Player 1)
 
-# All units are based around melee, ranged, cavalry
+# All units are based around melee, ranged, and cavalry
 
 # Player 1 and 2 pick one type of unit. Everyone has a base damage of 20 but depending on the unit, the damage they deal will range by a random number. 
 # Melee DMG: 20 + [-1, 1]
@@ -15,7 +15,7 @@
 # Ranged damage range: 17-23 dmg
 # Cavalry damage range: 18-22 dmg
 
-# Each turn there is a 1 in 6 chance that either players deal a critical hit
+# Each turn, there is a 1 in 6 chance that either player deals a critical hit
 
 # Player 1 will choose a weather event that will affect both participants in the following ways based on their unit choice: 
 

@@ -1,6 +1,7 @@
 #1
 import random
 from enum import Enum
+from unittest import skip
 
 
 weather = ["Typhoon", "Hurricane", "Earthquake"]
@@ -16,26 +17,18 @@ class WEATHER(Enum):
     EARTHQUAKE = 3
 
 class Player():
-    def __init__(self, name, unitChoice , firstInit,):
+    def __init__(self, name, unitChoice , firstInit, skipWeather):
         self.firstInit = firstInit
         self.dAffected = -1
         self.name = name
-        self.skipWeather = False
+        self.skipWeather = skipWeather
         self.health = 100
         self.damage = 0
         self.unitChoice = unitChoice
         self.crit = False
         self.won = None
+        self.wins = 0
 
-    def initStats(self, player):
-        if(  self.unitChoice == 1 and self.firstInit == True):
-             self.damage = UnitsDMG.MELEE_DMG._value_
-        if(self.unitChoice == 3 and self.firstInit == True):
-             self.damage = UnitsDMG.CAVALRY_DMG._value_
-        if(self.unitChoice == 2 and self.firstInit == True):
-            self.damage = UnitsDMG.RANGED_DMG._value_    
-        
-        return self.damage
     
     def weatherEventFunc(self, weatherEventNum, skipWeather):
         self.weatherEvent = weatherEventNum
@@ -49,18 +42,19 @@ class Player():
         or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 2 and self.skipWeather == False):
             self.dAffected = 0
             self.damage -= 5
-            print("-5 DMG for", self.name, "due to the weather.")
-        if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == True
-        or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 3 and self.skipWeather == True
-        or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == True):
+        if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == False
+        or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 3 and self.skipWeather == False
+        or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == False):
             self.health += 5
-            print("+5 HP for", self.name, "due to the weather.")
         return weather[weatherEventNum-1]
-            
-    
-
-    def takeDamage(self, damageTaken, player, ai):
-        self.health -= damageTaken
+        
+    def initStats(self):
+        if(  self.unitChoice == 1 and self.firstInit == True):
+             self.damage = UnitsDMG.MELEE_DMG._value_
+        if(self.unitChoice == 3 and self.firstInit == True):
+             self.damage = UnitsDMG.CAVALRY_DMG._value_
+        if(self.unitChoice == 2 and self.firstInit == True):
+            self.damage = UnitsDMG.RANGED_DMG._value_ 
 
     def getHP(self):
         healthDashes = 20
@@ -79,7 +73,12 @@ class Game:
     def __init__(self):
         self.gameOver = False
         self.round = 0
-
+    def battle(self, player, ai):
+        player.health -= ai.damage
+        ai.health -= player.damage
+    
+     
+    
     def newRound(self):
         self.round += 1
         print("\n***   Round: %d   ***\n" %(self.round))  
@@ -106,6 +105,8 @@ class Game:
             for line in text:
                 print(line.strip())
             g.close()
+
+            player.wins += 1
         elif player.health < 1 and ai.health < 1 and player.health == ai.health or player.health < 1 and ai.health < 1 and player.health == ai.health:
             self.gameOver = True
             g = open("draw.txt", "r")
