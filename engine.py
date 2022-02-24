@@ -50,9 +50,9 @@ class Player():
             self.dAffected = 0
             self.damage -= 5
             print("-5 DMG for", self.name, "due to the weather.")
-        if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == True
-        or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 3 and self.skipWeather == True
-        or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == True):
+        if(weatherEventNum == WEATHER.TYPHOON._value_ and self.unitChoice == 2 and self.skipWeather == False
+        or weatherEventNum == WEATHER.EARTHQUAKE._value_ and self.unitChoice == 3 and self.skipWeather == False
+        or weatherEventNum == WEATHER.HURRICANE._value_ and self.unitChoice == 1 and self.skipWeather == False):
             self.health += 5
             print("+5 HP for", self.name, "due to the weather.")
         return weather[weatherEventNum-1]
